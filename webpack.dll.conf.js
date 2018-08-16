@@ -1,9 +1,8 @@
 const path = require('path')
 const webpack = require('webpack')
 
-const context = path.join(__dirname, '..')
-
 module.exports = {
+    mode: 'production',
     entry: {
         vendor: ['./src/libs/vendor.js'] // entry 以项目根目录为起始路径
     },
@@ -13,25 +12,11 @@ module.exports = {
         filename: '[name].dll.js',
         library: '[name]'
     },
-    resolve: {
-        alias: {
-            'vue$': 'vue/dist/vue.esm.js'
-        }
-    },
     plugins: [
         new webpack.DllPlugin({
             path: path.resolve(__dirname, './html/static/[name].manifest.json'),
             name: '[name]',
-            context: context
-        }),
-        // 压缩js代码
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            },
-            output: { // 删除打包后的注释
-                comments: false
-            }
+            context: path.join(__dirname, '..')
         })
     ]
 }
