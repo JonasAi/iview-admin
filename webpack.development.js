@@ -34,8 +34,16 @@ module.exports = webpackMerge(webpackBase, {
             }
         }]
     },
-    plugins: [
-        
-    ],
+    module: {
+        rules: [{
+            test: /\.(less|css)$/,
+            use: ['vue-style-loader', 'css-loader', 'postcss-loader', {
+                loader: 'less-loader',
+                options: {
+                    javascriptEnabled: true
+                }
+            }]
+        }]
+    },
     devtool: '#source-map'
 })

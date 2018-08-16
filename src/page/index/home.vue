@@ -27,7 +27,8 @@ Row.page-home
     .logo {
         font-size: 40px;
         padding-bottom: 10px;
-        font-family: iconfont
+        font-family: iconfont;
+        display: flex;
     }
 }
 </style>

@@ -1,9 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const autoprefixer = require('autoprefixer')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
-
 module.exports = {
     entry: {
         index: './src/main.js',
@@ -14,22 +12,7 @@ module.exports = {
         filename: '[name].js',
         chunkFilename: '_[name]-[chunkhash:4].js'
     },
-    plugins: [new HtmlWebpackPlugin({
-            filename: '../../html/index.html',
-            template: path.resolve(__dirname, './src/libs/template.ejs'),
-            hash: true,
-            minify: {
-                //清除属性引号
-                removeAttributeQuotes: true,
-                //清除多余空格
-                collapseWhitespace: true,
-                //压缩javascript
-                minifyJS: true
-            },
-            path: '/static/',
-            title: '',
-            //chunks: ['index']
-        }), 
+    plugins: [
         new VueLoaderPlugin()
     ],
     module: {
@@ -43,15 +26,6 @@ module.exports = {
                         })
                     ]
                 }
-            },
-            {
-                test: /\.(less|css)$/,
-                use: ['vue-style-loader', 'css-loader', 'postcss-loader', {
-                    loader: 'less-loader',
-                    options: {
-                        javascriptEnabled: true
-                    }
-                }]
             },
             {
                 test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
