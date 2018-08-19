@@ -46,8 +46,9 @@ axios.interceptors.response.use(function(response) {
     Promise.reject(err)
 })
 axios.defaults.transformRequest = [function(data) {
-    var ret = []
-    for (var it in data) {
+    var ret = [],
+        it;
+    for (it in data) {
         ret.push(encodeURIComponent(it) + '=' + encodeURIComponent(data[it]))
     }
     return ret.join('&')

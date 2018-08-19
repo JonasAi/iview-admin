@@ -8,7 +8,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, './html/static'),
-        publicPath: '/static/',
+        publicPath: '/html/static/',
         filename: '[name].js',
         chunkFilename: '_[name]-[chunkhash:4].js'
     },

@@ -144,7 +144,9 @@ export default {
     },
     methods: {
         objStyle(name) {
-            if (this.close) return {}
+            if (this.close) {
+                return {}
+            }
             if (this.$refs[name]) {
                 return {
                     height: `${this.meta.parent === name ? this.$refs[name][0].offsetHeight : 0}px`
@@ -169,7 +171,9 @@ export default {
             return ''
         },
         switchMenu(name) {
-            if (this.close) return
+            if (this.close) {
+                return
+            }
             if (this.meta.parent === name) {
                 this.meta.parent = ''
             } else {

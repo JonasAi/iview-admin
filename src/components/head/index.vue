@@ -39,7 +39,7 @@ export default {
     methods: {
         logout() {
             axios.post('/index/signout')
-                .then(el => {
+                .then(() => {
                     location.reload()
                 })
         }

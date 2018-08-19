@@ -3,11 +3,11 @@ import 'iview/src/styles/index.less'
 import './common.less'
 
 let getParams = () => {
-    let url = location.search || location.href;
-    let g = {};
+    let url = location.search || location.href,
+        g = {};
     if (url.indexOf('?') !== -1) {
-        let str = url.split('?')[1]
-        let arr = str.indexOf('&') !== -1 ? str.split('&') : [str];
+        let str = url.split('?')[1],
+            arr = str.indexOf('&') !== -1 ? str.split('&') : [str];
         for (let i = 0; i < arr.length; i++) {
             let tmp = arr[i].split('=');
             g[tmp[0]] = decodeURI(tmp[1]);
@@ -48,8 +48,8 @@ axios.defaults.responseType = 'json'
 axios.defaults.baseURL = '/index/'
 
 Number.prototype.cutFixed = function(n) {
-    let t = this.toString().split('.')
-    let s = '000000000000000'
+    let t = this.toString().split('.'),
+        s = '000000000000000';
     if (n) {
         if (/\./.test(this)) {
             return [t[0], (t[1] + s).substr(0, n)].join('.')
