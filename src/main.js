@@ -15,7 +15,7 @@ Vue.filter('fullNumber', config.fullNumber)
 
 Vue.use(VueRouter)
 Vue.use(iView)
-const router = new VueRouter({ routes })
+const router = new VueRouter({ routes, mode: 'history' })
 
 document.setTitle = function(title) {
     document.title = title
@@ -46,9 +46,8 @@ axios.interceptors.response.use(function(response) {
     Promise.reject(err)
 })
 axios.defaults.transformRequest = [function(data) {
-    var ret = [],
-        it;
-    for (it in data) {
+    var ret = []
+    for (var it in data) {
         ret.push(encodeURIComponent(it) + '=' + encodeURIComponent(data[it]))
     }
     return ret.join('&')
